@@ -113,6 +113,13 @@ end
 
 #19
 
-# def sell_pet_to_customer(pet_shop, pet, customer)
-#
-# end
+def sell_pet_to_customer(pet_shop, pet, customer)
+  return "Pet not found" if pet == nil
+  return "Insufficient funds" unless customer_can_afford_pet(customer, pet)
+  add_pet_to_customer(customer, pet)
+  remove_customer_cash(customer, pet[:price])
+
+  remove_pet_by_name(customer, pet)
+  increase_pets_sold(pet_shop, 1)
+  add_or_remove_cash(pet_shop, pet[:price])
+end
