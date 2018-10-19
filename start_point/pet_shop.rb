@@ -70,38 +70,49 @@ end
 
 #12
 
-
+def remove_pet_by_name(pet_shop, pet_name)
+  pet_shop[:pets].delete(find_pet_by_name(pet_shop, pet_name))
+end
 
 #13
 
-
+def add_pet_to_stock(pet_shop, new_pet)
+  pet_shop[:pets].push(new_pet)
+end
 
 #14
 
-
+def customer_cash(customer)
+  return customer[:cash]
+end
 
 #15
 
+def remove_customer_cash(customer, amount_to_remove)
+  customer[:cash] -= amount_to_remove
+end
 
 
 #16
 
-
+def customer_pet_count(customer)
+  return customer[:pets].length
+end
 
 #17
 
-
+def add_pet_to_customer(customer, new_pet)
+  customer[:pets].push(new_pet)
+end
 
 #18
 
-
+def customer_can_afford_pet(customer, pet)
+  return customer[:cash] >= pet[:price]
+end
 
 #19
 
-
-
-#20
-
-
-
-#21
+# def sell_pet_to_customer(pet_shop, pet, customer)
+#
+# end
