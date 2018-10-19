@@ -58,9 +58,9 @@ end
 #10
 
 def find_pet_by_name(pet_shop, pet_name_wanted)
-    for pet in pet_shop[:pets]
-      return pet if pet[:name] == pet_name_wanted
-    end
+  for pet in pet_shop[:pets]
+    return pet if pet[:name] == pet_name_wanted
+  end
   return nil
 end
 
@@ -115,7 +115,9 @@ end
 
 def sell_pet_to_customer(pet_shop, pet, customer)
   return "Pet not found" if pet == nil
-  return "Insufficient funds" unless customer_can_afford_pet(customer, pet)
+  return "Pet not found" if pet.class != Hash || find_pet_by_name(pet_shop, pet[:name]) == nil
+  return "Insufficient funds" if !(pet[:price].class == Integer || pet[:price].class == Float) || !customer_can_afford_pet(customer, pet)
+  p "Customer Has Money"
   add_pet_to_customer(customer, pet)
   remove_customer_cash(customer, pet[:price])
 
